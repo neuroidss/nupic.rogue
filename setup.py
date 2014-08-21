@@ -98,7 +98,7 @@ setup(
   name = "numenta-rogue",
   description = (
     "Metric collection agent for Numenta Rogue showcase application"),
-  url = "https://github.com/nupic.rogue",
+  url = "https://github.com/numenta/rogue",
   classifiers = [
     "Environment :: Console",
     "Intended Audience :: Developers",
