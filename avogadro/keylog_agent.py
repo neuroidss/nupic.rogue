@@ -24,7 +24,7 @@ class AvogadroKeyCountAgent(AvogadroAgent):
   name = "KeyCount"
   minVal = 0.0
   maxVal = 1000.0
-  numBuckets = 284.0
+  numBuckets = 284
   resolution = max(0.001, (maxVal - minVal) / numBuckets)
 
   ENCODER_PARAMS = {
@@ -52,7 +52,7 @@ class AvogadroKeyDownDownAgent(AvogadroAgent):
   name = "KeyDownDown"
   minVal = 0.0
   maxVal = 300.0
-  numBuckets = 284.0
+  numBuckets = 284
   resolution = max(0.001, (maxVal - minVal) / numBuckets)
 
   ENCODER_PARAMS = {
@@ -80,7 +80,7 @@ class AvogadroKeyUpDownAgent(AvogadroAgent):
   name = "KeyUpDown"
   minVal = 0.0
   maxVal = 300.0
-  numBuckets = 284.0
+  numBuckets = 284
   resolution = max(0.001, (maxVal - minVal) / numBuckets)
 
   ENCODER_PARAMS = {
@@ -108,7 +108,7 @@ class AvogadroKeyHoldAgent(AvogadroAgent):
   name = "KeyHold"
   minVal = 0.0
   maxVal = 2.0
-  numBuckets = 284.0
+  numBuckets = 284
   resolution = max(0.001, (maxVal - minVal) / numBuckets)
 
   ENCODER_PARAMS = {

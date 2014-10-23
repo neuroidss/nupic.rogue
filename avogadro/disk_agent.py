@@ -25,7 +25,7 @@ class AvogadroDiskReadBytesAgent(AvogadroAgent):
   datasourceType = "DERIVE"
   minVal = 0
   maxVal = 1000000
-  numBuckets = 284.0
+  numBuckets = 284
   resolution = max(0.001, (maxVal - minVal) / numBuckets)
 
   ENCODER_PARAMS = {
@@ -50,7 +50,7 @@ class AvogadroDiskWriteBytesAgent(AvogadroAgent):
   datasourceType = "DERIVE"
   minVal = 0
   maxVal = 1000000
-  numBuckets = 284.0
+  numBuckets = 284
   resolution = max(0.001, (maxVal - minVal) / numBuckets)
 
   ENCODER_PARAMS = {
@@ -75,7 +75,7 @@ class AvogadroDiskReadTimeAgent(AvogadroAgent):
   datasourceType = "DERIVE"
   minVal = 0
   maxVal = 1000
-  numBuckets = 284.0
+  numBuckets = 284
   resolution = max(0.001, (maxVal - minVal) / numBuckets)
 
   ENCODER_PARAMS = {
@@ -100,7 +100,7 @@ class AvogadroDiskWriteTimeAgent(AvogadroAgent):
   datasourceType = "DERIVE"
   minVal = 0
   maxVal = 3000
-  numBuckets = 284.0
+  numBuckets = 284
   resolution = max(0.001, (maxVal - minVal) / numBuckets)
 
   ENCODER_PARAMS = {

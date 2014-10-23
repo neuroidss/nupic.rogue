@@ -24,7 +24,7 @@ class AvogadroCPUTimesAgent(AvogadroAgent):
   name = "CPUPercent"
   minVal = 0.0
   maxVal = 100.0
-  numBuckets = 284.0
+  numBuckets = 284
   resolution = max(0.001, (maxVal - minVal) / numBuckets)
 
   ENCODER_PARAMS = {

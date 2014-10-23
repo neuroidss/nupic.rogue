@@ -25,7 +25,7 @@ class AvogadroNetworkBytesSentAgent(AvogadroAgent):
   datasourceType = "DERIVE"
   minVal = 0
   maxVal = 1000000
-  numBuckets = 284.0
+  numBuckets = 284
   resolution = max(0.001, (maxVal - minVal) / numBuckets)
 
   ENCODER_PARAMS = {
@@ -50,7 +50,7 @@ class AvogadroNetworkBytesReceivedAgent(AvogadroAgent):
   datasourceType = "DERIVE"
   minVal = 0
   maxVal = 1000000
-  numBuckets = 284.0
+  numBuckets = 284
   resolution = max(0.001, (maxVal - minVal) / numBuckets)
 
   ENCODER_PARAMS = {
