@@ -16,9 +16,28 @@
 from agent import AvogadroAgent
 import os, csv
 
+from model_params import getModelParams
+
+
+
 class AvogadroKeyCountAgent(AvogadroAgent):
   name = "KeyCount"
-  max = 1000
+  minVal = 0.0
+  maxVal = 1000.0
+  numBuckets = 284
+  resolution = max(0.001, (maxVal - minVal) / numBuckets)
+
+  ENCODER_PARAMS = {
+    name: {
+      "name": name,
+      "fieldname": name,
+      "resolution": resolution,
+      "seed": 42,
+      "type": "RandomDistributedScalarEncoder"
+    }
+  }
+
+  MODEL_PARAMS = getModelParams(ENCODER_PARAMS, name)
 
   def collect(self):
     inPath = os.path.dirname(os.path.realpath(__file__)) + "/keys.temp"
@@ -31,7 +50,22 @@ class AvogadroKeyCountAgent(AvogadroAgent):
 
 class AvogadroKeyDownDownAgent(AvogadroAgent):
   name = "KeyDownDown"
-  max = 300
+  minVal = 0.0
+  maxVal = 300.0
+  numBuckets = 284
+  resolution = max(0.001, (maxVal - minVal) / numBuckets)
+
+  ENCODER_PARAMS = {
+    name: {
+      "name": name,
+      "fieldname": name,
+      "resolution": resolution,
+      "seed": 42,
+      "type": "RandomDistributedScalarEncoder"
+    }
+  }
+
+  MODEL_PARAMS = getModelParams(ENCODER_PARAMS, name)
 
   def collect(self):
     inPath = os.path.dirname(os.path.realpath(__file__)) + "/keys.temp"
@@ -44,7 +78,22 @@ class AvogadroKeyDownDownAgent(AvogadroAgent):
 
 class AvogadroKeyUpDownAgent(AvogadroAgent):
   name = "KeyUpDown"
-  max = 300
+  minVal = 0.0
+  maxVal = 300.0
+  numBuckets = 284
+  resolution = max(0.001, (maxVal - minVal) / numBuckets)
+
+  ENCODER_PARAMS = {
+    name: {
+      "name": name,
+      "fieldname": name,
+      "resolution": resolution,
+      "seed": 42,
+      "type": "RandomDistributedScalarEncoder"
+    }
+  }
+
+  MODEL_PARAMS = getModelParams(ENCODER_PARAMS, name)
 
   def collect(self):
     inPath = os.path.dirname(os.path.realpath(__file__)) + "/keys.temp"
@@ -57,7 +106,22 @@ class AvogadroKeyUpDownAgent(AvogadroAgent):
 
 class AvogadroKeyHoldAgent(AvogadroAgent):
   name = "KeyHold"
-  max = 2
+  minVal = 0.0
+  maxVal = 2.0
+  numBuckets = 284
+  resolution = max(0.001, (maxVal - minVal) / numBuckets)
+
+  ENCODER_PARAMS = {
+    name: {
+      "name": name,
+      "fieldname": name,
+      "resolution": resolution,
+      "seed": 42,
+      "type": "RandomDistributedScalarEncoder"
+    }
+  }
+
+  MODEL_PARAMS = getModelParams(ENCODER_PARAMS, name)
 
   def collect(self):
     inPath = os.path.dirname(os.path.realpath(__file__)) + "/keys.temp"

@@ -16,11 +16,28 @@
 from agent import AvogadroAgent
 import psutil
 
+from model_params import getModelParams
+
 
 
 class AvogadroCPUTimesAgent(AvogadroAgent):
   name = "CPUPercent"
-  max = 100
+  minVal = 0.0
+  maxVal = 100.0
+  numBuckets = 284
+  resolution = max(0.001, (maxVal - minVal) / numBuckets)
+
+  ENCODER_PARAMS = {
+    name: {
+      "name": name,
+      "fieldname": name,
+      "resolution": resolution,
+      "seed": 42,
+      "type": "RandomDistributedScalarEncoder"
+    }
+  }
+
+  MODEL_PARAMS = getModelParams(ENCODER_PARAMS, name)
 
   def collect(self):
     return psutil.cpu_percent()
