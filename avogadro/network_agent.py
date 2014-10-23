@@ -17,11 +17,30 @@
 from agent import AvogadroAgent
 import psutil
 
+from model_params import getModelParams
+
 
 
 class AvogadroNetworkBytesSentAgent(AvogadroAgent):
   name = "NetworkBytesSent"
   datasourceType = "DERIVE"
+  min = 0.0
+  max = 1000000
+
+  ENCODER_PARAMS = {
+    name: {
+      "clipInput": True,
+      "fieldname": name,
+      "maxval": max,
+      "minval": min,
+      "n": 50,
+      "name": name,
+      "type": "ScalarEncoder",
+      "w": 21
+    }
+  }
+
+  MODEL_PARAMS = getModelParams(ENCODER_PARAMS, name)
 
   def collect(self):
     return psutil.net_io_counters().bytes_sent
@@ -31,6 +50,23 @@ class AvogadroNetworkBytesSentAgent(AvogadroAgent):
 class AvogadroNetworkBytesReceivedAgent(AvogadroAgent):
   name = "NetworkBytesReceived"
   datasourceType = "DERIVE"
+  min = 0.0
+  max = 1000000
+
+  ENCODER_PARAMS = {
+    name: {
+      "clipInput": True,
+      "fieldname": name,
+      "maxval": max,
+      "minval": min,
+      "n": 50,
+      "name": name,
+      "type": "ScalarEncoder",
+      "w": 21
+    }
+  }
+
+  MODEL_PARAMS = getModelParams(ENCODER_PARAMS, name)
 
   def collect(self):
     return psutil.net_io_counters().bytes_recv

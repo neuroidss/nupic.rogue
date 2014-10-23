@@ -16,11 +16,30 @@
 from agent import AvogadroAgent
 import psutil
 
+from model_params import getModelParams
+
 
 
 class AvogadroDiskReadBytesAgent(AvogadroAgent):
   name = "DiskReadBytes"
   datasourceType = "DERIVE"
+  min = 0.0
+  max = 1000000
+
+  ENCODER_PARAMS = {
+    name: {
+      "clipInput": True,
+      "fieldname": name,
+      "maxval": max,
+      "minval": min,
+      "n": 50,
+      "name": name,
+      "type": "ScalarEncoder",
+      "w": 21
+    }
+  }
+
+  MODEL_PARAMS = getModelParams(ENCODER_PARAMS, name)
 
   def collect(self):
     return psutil.disk_io_counters().read_bytes
@@ -30,6 +49,23 @@ class AvogadroDiskReadBytesAgent(AvogadroAgent):
 class AvogadroDiskWriteBytesAgent(AvogadroAgent):
   name = "DiskWriteBytes"
   datasourceType = "DERIVE"
+  min = 0.0
+  max = 1000000
+
+  ENCODER_PARAMS = {
+    name: {
+      "clipInput": True,
+      "fieldname": name,
+      "maxval": max,
+      "minval": min,
+      "n": 50,
+      "name": name,
+      "type": "ScalarEncoder",
+      "w": 21
+    }
+  }
+
+  MODEL_PARAMS = getModelParams(ENCODER_PARAMS, name)
 
   def collect(self):
     return psutil.disk_io_counters().write_bytes
@@ -39,6 +75,23 @@ class AvogadroDiskWriteBytesAgent(AvogadroAgent):
 class AvogadroDiskReadTimeAgent(AvogadroAgent):
   name = "DiskReadTime"
   datasourceType = "DERIVE"
+  min = 0.0
+  max = 1000
+
+  ENCODER_PARAMS = {
+    name: {
+      "clipInput": True,
+      "fieldname": name,
+      "maxval": max,
+      "minval": min,
+      "n": 50,
+      "name": name,
+      "type": "ScalarEncoder",
+      "w": 21
+    }
+  }
+
+  MODEL_PARAMS = getModelParams(ENCODER_PARAMS, name)
 
   def collect(self):
     return psutil.disk_io_counters().read_time
@@ -48,6 +101,23 @@ class AvogadroDiskReadTimeAgent(AvogadroAgent):
 class AvogadroDiskWriteTimeAgent(AvogadroAgent):
   name = "DiskWriteTime"
   datasourceType = "DERIVE"
+  min = 0.0
+  max = 3000
+
+  ENCODER_PARAMS = {
+    name: {
+      "clipInput": True,
+      "fieldname": name,
+      "maxval": max,
+      "minval": min,
+      "n": 50,
+      "name": name,
+      "type": "ScalarEncoder",
+      "w": 21
+    }
+  }
+
+  MODEL_PARAMS = getModelParams(ENCODER_PARAMS, name)
 
   def collect(self):
     return psutil.disk_io_counters().write_time

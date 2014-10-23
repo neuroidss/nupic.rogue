@@ -1,0 +1,145 @@
+# ----------------------------------------------------------------------
+# Numenta Platform for Intelligent Computing (NuPIC)
+# Copyright (C) 2013, Numenta, Inc.  Unless you have an agreement
+# with Numenta, Inc., for a separate license for this software code, the
+# following terms and conditions apply:
+#
+# This program is free software: you can redistribute it and/or modify
+# it under the terms of the GNU General Public License version 3 as
+# published by the Free Software Foundation.
+#
+# This program is distributed in the hope that it will be useful,
+# but WITHOUT ANY WARRANTY; without even the implied warranty of
+# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+# See the GNU General Public License for more details.
+#
+# You should have received a copy of the GNU General Public License
+# along with this program.  If not, see http://www.gnu.org/licenses.
+#
+# http://numenta.org/licenses/
+# ----------------------------------------------------------------------
+import copy
+
+
+
+MODEL_PARAMS = {
+  "aggregationInfo": {
+    "seconds": 0,
+    "fields": [],
+    "months": 0,
+    "days": 0,
+    "years": 0,
+    "hours": 0,
+    "microseconds": 0,
+    "weeks": 0,
+    "minutes": 0,
+    "milliseconds": 0
+  },
+  "model": "CLA",
+  "version": 1,
+  "predictAheadTime": None,
+  "modelParams": {
+    "sensorParams": {
+      "verbosity": 0,
+      "encoders": {
+        "timestamp_dayOfWeek": None,
+        "timestamp_timeOfDay": {
+          "type": "DateEncoder",
+          "timeOfDay": [21, 5.4864773611134598],
+          "fieldname": "timestamp",
+          "name": "timestamp"
+        },
+        "timestamp_weekend": None
+      },
+      "sensorAutoReset": None
+    },
+    "spParams": {
+      "columnCount": 2048,
+      "synPermInactiveDec": 0.00065,
+      "randomSP": 0,
+      "inputWidth": 0,
+      "spVerbosity": 0,
+      "synPermActiveInc": 0.001,
+      "synPermConnected": 0.10000000000000001,
+      "numActivePerInhArea": 40,
+      "seed": 1956,
+      "coincInputPoolPct": 0.8,
+      "globalInhibition": 1,
+      "useHighTier": 0,
+      "maxFiringBoost": 1.0,
+      "maxSynPermBoost": 1.0
+    },
+    "trainSPNetOnlyIfRequested": False,
+    "clParams": {
+      "alpha": 0.0068717199878650798,
+      "regionName": "CLAClassifierRegion",
+      "steps": "1",
+      "clVerbosity": 0
+    },
+    "tpParams": {
+      "columnCount": 2048,
+      "activationThreshold": 13,
+      "pamLength": 1,
+      "cellsPerColumn": 32,
+      "permanenceInc": 0.10000000000000001,
+      "minThreshold": 11,
+      "verbosity": 0,
+      "maxSynapsesPerSegment": 32,
+      "outputType": "normal",
+      "globalDecay": 0.0,
+      "initialPerm": 0.20999999999999999,
+      "permanenceDec": 0.10000000000000001,
+      "seed": 1960,
+      "maxAge": 0,
+      "newSynapseCount": 20,
+      "maxSegmentsPerCell": 128,
+      "temporalImp": "cpp",
+      "inputWidth": 2048
+    },
+    "anomalyParams": {
+      "anomalyCacheRecords": None,
+      "autoDetectThreshold": None,
+      "autoDetectWaitRecords": 5030
+    },
+    "spEnable": True,
+    "inferenceType": "TemporalAnomaly",
+    "tpEnable": True,
+    "clEnable": False
+  }
+}
+
+
+def getModelParams(encoderParams, predictedField):
+  """
+    Creates a model params dict that includes the encoder params for the
+    specific model.
+
+    :param encoderParams: A dict containing the encoder parameters for the
+    specified predicted field. For example:
+      {
+        u"cpu_percent": {
+          "clipInput": True,
+          "fieldname": u"cpu_percent",
+          "maxval": 100.0,
+          "minval": 0.0,
+          "n": 50,
+          "name": u"cpu_percent",
+          "type": "ScalarEncoder",
+          "w": 21
+        }
+      }
+
+    NOTE: The fieldname, name and parent value must all be the same (e.g.,
+      cpu_percent)
+
+    :param predictedField: A `string` representing the name of the
+    predictedField. This should match exactly the `fieldname` in the encoder
+    params
+
+    :returns: A `dict` with all of the relevant model parameters
+    :rtype: dict
+  """
+  thisModel = copy.deepcopy(MODEL_PARAMS)
+  thisModel["modelParams"]["sensorParams"]["encoders"][predictedField] = (
+    encoderParams[predictedField])
+  return thisModel

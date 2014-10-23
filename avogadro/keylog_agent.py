@@ -16,9 +16,29 @@
 from agent import AvogadroAgent
 import os, csv
 
+from model_params import getModelParams
+
+
+
 class AvogadroKeyCountAgent(AvogadroAgent):
   name = "KeyCount"
+  min = 0.0
   max = 1000
+
+  ENCODER_PARAMS = {
+    name: {
+      "clipInput": True,
+      "fieldname": name,
+      "maxval": max,
+      "minval": min,
+      "n": 50,
+      "name": name,
+      "type": "ScalarEncoder",
+      "w": 21
+    }
+  }
+
+  MODEL_PARAMS = getModelParams(ENCODER_PARAMS, name)
 
   def collect(self):
     inPath = os.path.dirname(os.path.realpath(__file__)) + "/keys.temp"
@@ -31,7 +51,23 @@ class AvogadroKeyCountAgent(AvogadroAgent):
 
 class AvogadroKeyDownDownAgent(AvogadroAgent):
   name = "KeyDownDown"
+  min = 0.0
   max = 300
+
+  ENCODER_PARAMS = {
+    name: {
+      "clipInput": True,
+      "fieldname": name,
+      "maxval": max,
+      "minval": min,
+      "n": 50,
+      "name": name,
+      "type": "ScalarEncoder",
+      "w": 21
+    }
+  }
+
+  MODEL_PARAMS = getModelParams(ENCODER_PARAMS, name)
 
   def collect(self):
     inPath = os.path.dirname(os.path.realpath(__file__)) + "/keys.temp"
@@ -44,7 +80,23 @@ class AvogadroKeyDownDownAgent(AvogadroAgent):
 
 class AvogadroKeyUpDownAgent(AvogadroAgent):
   name = "KeyUpDown"
+  min = 0.0
   max = 300
+
+  ENCODER_PARAMS = {
+    name: {
+      "clipInput": True,
+      "fieldname": name,
+      "maxval": max,
+      "minval": min,
+      "n": 50,
+      "name": name,
+      "type": "ScalarEncoder",
+      "w": 21
+    }
+  }
+
+  MODEL_PARAMS = getModelParams(ENCODER_PARAMS, name)
 
   def collect(self):
     inPath = os.path.dirname(os.path.realpath(__file__)) + "/keys.temp"
@@ -57,7 +109,23 @@ class AvogadroKeyUpDownAgent(AvogadroAgent):
 
 class AvogadroKeyHoldAgent(AvogadroAgent):
   name = "KeyHold"
+  min = 0.0
   max = 2
+
+  ENCODER_PARAMS = {
+    name: {
+      "clipInput": True,
+      "fieldname": name,
+      "maxval": max,
+      "minval": min,
+      "n": 50,
+      "name": name,
+      "type": "ScalarEncoder",
+      "w": 21
+    }
+  }
+
+  MODEL_PARAMS = getModelParams(ENCODER_PARAMS, name)
 
   def collect(self):
     inPath = os.path.dirname(os.path.realpath(__file__)) + "/keys.temp"

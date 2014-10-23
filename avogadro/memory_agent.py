@@ -16,11 +16,29 @@
 from agent import AvogadroAgent
 import psutil
 
+from model_params import getModelParams
+
 
 
 class AvogadroMemoryAgent(AvogadroAgent):
   name = "MemoryPercent"
+  min = 0.0
   max = 100
+
+  ENCODER_PARAMS = {
+    name: {
+      "clipInput": True,
+      "fieldname": name,
+      "maxval": max,
+      "minval": min,
+      "n": 50,
+      "name": name,
+      "type": "ScalarEncoder",
+      "w": 21
+    }
+  }
+
+  MODEL_PARAMS = getModelParams(ENCODER_PARAMS, name)
 
   def collect(self):
     return psutil.virtual_memory().percent

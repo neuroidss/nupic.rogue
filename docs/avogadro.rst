@@ -81,10 +81,26 @@ avogadro Package
     :undoc-members:
     :show-inheritance:
 
+:mod:`model_params` Module
+----------------------------
+
+.. automodule:: avogadro.model_params
+    :members:
+    :undoc-members:
+    :show-inheritance:
+
 :mod:`network_agent` Module
 ---------------------------
 
 .. automodule:: avogadro.network_agent
+    :members:
+    :undoc-members:
+    :show-inheritance:
+
+:mod:`nupic_forwarder` Module
+----------------------------
+
+.. automodule:: avogadro.nupic_forwarder
     :members:
     :undoc-members:
     :show-inheritance:

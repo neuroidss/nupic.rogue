@@ -114,6 +114,7 @@ setup(
     {"console_scripts": ["rogue-agent = avogadro:main",
                          "rogue-export = avogadro.export:main",
                          "rogue-forward = avogadro.grok_forwarder:main",
+                         "rogue-to-nupic = avogadro.nupic_forwarder:main",
                          "rogue-keycounter = avogadro.keys:main"]}),
   install_requires = requirements,
   extras_require = {"docs": ["sphinx"]},
