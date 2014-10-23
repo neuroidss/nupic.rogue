@@ -1,4 +1,4 @@
-#!/usr/bin/python
+#!/usr/bin/env python
 import os
 import time, datetime
 
@@ -155,8 +155,9 @@ def record():
 
   timestamp = time.mktime(datetime.datetime.utcnow().timetuple())
   with open(path + "/keycounts.csv", 'ab') as csvFile:
-    csvFile.write("%d,%s,%s,%s,%s,%s\n" % (timestamp, Helper.num, averageDownDown,
-                                        averageUpDown, averageHold, keySpeed))
+    csvFile.write("%d,%s,%s,%s,%s,%s\n" % (timestamp, Helper.num,
+                                           averageDownDown, averageUpDown,
+                                           averageHold, keySpeed))
 
   Helper.reset()
   AppHelper.callLater(_BUCKET_SIZE_SECONDS, record)

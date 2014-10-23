@@ -1,3 +1,4 @@
+#!/usr/bin/env python
 #------------------------------------------------------------------------------
 # Copyright 2013-2014 Numenta Inc.
 #
@@ -17,7 +18,6 @@
 a Grok server via Custom Metrics Socket API.
 """
 import csv
-import math
 import os
 from optparse import OptionParser
 import time
@@ -72,14 +72,15 @@ def _fetchAndForward(metric, options, _cache={}):
     if mode == "r+":
       start = fp.read()
     else:
-      start = str(int(time.mktime((datetime.datetime.now()-datetime.timedelta(days=14)).timetuple())))
+      start = str(int(time.mktime((datetime.datetime.now() -
+                                   datetime.timedelta(days=14)).timetuple())))
 
     fetched = metric.fetch(prefix=options.prefix, start=start)
 
     for (ts, value) in fetched:
       try:
         value = float(value)
-      except (ValueError, TypeError) as e:
+      except (ValueError, TypeError):
         continue
 
       csvout.writerow((metric.name, value, ts))
@@ -100,7 +101,7 @@ def main():
 
   AvogadroAgent.addParserOptions(parser)
 
-  (options, args) = parser.parse_args()
+  (options, _args) = parser.parse_args()
 
   _fetchAndForward(AvogadroCPUTimesAgent, options)
   _fetchAndForward(AvogadroMemoryAgent, options)

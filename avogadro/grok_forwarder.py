@@ -1,3 +1,4 @@
+#!/usr/bin/env python
 #------------------------------------------------------------------------------
 # Copyright 2013-2014 Numenta Inc.
 #
@@ -65,7 +66,7 @@ def _fetchAndForward(sock, metric, options):
     for (ts, value) in fetched:
       try:
         value = float(value)
-      except (ValueError, TypeError) as e:
+      except (ValueError, TypeError):
         continue
 
       if not math.isnan(value):
@@ -89,7 +90,7 @@ def main():
 
   AvogadroAgent.addParserOptions(parser)
 
-  (options, args) = parser.parse_args()
+  (options, _args) = parser.parse_args()
 
   grok = GrokSession(server=options.server)
 

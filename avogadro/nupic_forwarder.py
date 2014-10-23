@@ -1,3 +1,4 @@
+#!/usr/bin/env python
 #------------------------------------------------------------------------------
 # Copyright 2013-2014 Numenta Inc.
 #
@@ -53,7 +54,7 @@ def createModel(metric):
 
 
 def runAvogadroAnomaly(metric, options):
-  """ 
+  """
   Create a new HTM Model, fetch the data from the local DB, process it in NuPIC,
   and save the results to a new CSV output file.
 
@@ -65,20 +66,20 @@ def runAvogadroAnomaly(metric, options):
 
   fetched = metric.fetch(prefix=options.prefix, start=None)
 
-  resultFile = open(os.path.join(options.prefix, metric.name + "-result.csv"), 
+  resultFile = open(os.path.join(options.prefix, metric.name + "-result.csv"),
                     "wb")
   csvWriter = csv.writer(resultFile)
   csvWriter.writerow(["timestamp", metric.name, "raw_anomaly_score",
                       "anomaly_likelihood", "color"])
 
   headers = ("timestamp", metric.name)
-  
+
   anomalyLikelihood = AnomalyLikelihood()
 
   for (ts, value) in fetched:
     try:
       value = float(value)
-    except (ValueError, TypeError) as e:
+    except (ValueError, TypeError):
       continue
 
     if not math.isnan(value):
@@ -115,7 +116,7 @@ def main():
 
   AvogadroAgent.addParserOptions(parser)
 
-  (options, args) = parser.parse_args()
+  (options, _args) = parser.parse_args()
 
   runAvogadroAnomaly(AvogadroCPUTimesAgent, options)
   runAvogadroAnomaly(AvogadroMemoryAgent, options)
