@@ -33,8 +33,8 @@ class RRDToolClient(object):
 
   # RRDTool default DS: arguments for `rrdcreate`
   datasourceType = "GAUGE"
-  min = 0
-  max = "U"
+  minVal = 0
+  maxVal = "U"
   heartbeat = DEFAULT_HEARTBEAT
 
 
@@ -59,8 +59,8 @@ class RRDToolClient(object):
                                     # http://oss.oetiker.ch/rrdtool/doc/rrdcreate.en.html
                     cls.datasourceType,
                     str(cls.heartbeat),
-                    str(cls.min),
-                    str(cls.max)])]
+                    str(cls.minVal),
+                    str(cls.maxVal)])]
 
     rra = ["RRA:AVERAGE:0.5:1:4032"] # 14 days - 5-minute resolution
 

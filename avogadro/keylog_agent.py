@@ -22,19 +22,18 @@ from model_params import getModelParams
 
 class AvogadroKeyCountAgent(AvogadroAgent):
   name = "KeyCount"
-  min = 0.0
-  max = 1000
+  minVal = 0.0
+  maxVal = 1000.0
+  numBuckets = 284.0
+  resolution = max(0.001, (maxVal - minVal) / numBuckets)
 
   ENCODER_PARAMS = {
     name: {
-      "clipInput": True,
-      "fieldname": name,
-      "maxval": max,
-      "minval": min,
-      "n": 50,
       "name": name,
-      "type": "ScalarEncoder",
-      "w": 21
+      "fieldname": name,
+      "resolution": resolution,
+      "seed": 42,
+      "type": "RandomDistributedScalarEncoder"
     }
   }
 
@@ -51,19 +50,18 @@ class AvogadroKeyCountAgent(AvogadroAgent):
 
 class AvogadroKeyDownDownAgent(AvogadroAgent):
   name = "KeyDownDown"
-  min = 0.0
-  max = 300
+  minVal = 0.0
+  maxVal = 300.0
+  numBuckets = 284.0
+  resolution = max(0.001, (maxVal - minVal) / numBuckets)
 
   ENCODER_PARAMS = {
     name: {
-      "clipInput": True,
-      "fieldname": name,
-      "maxval": max,
-      "minval": min,
-      "n": 50,
       "name": name,
-      "type": "ScalarEncoder",
-      "w": 21
+      "fieldname": name,
+      "resolution": resolution,
+      "seed": 42,
+      "type": "RandomDistributedScalarEncoder"
     }
   }
 
@@ -80,19 +78,18 @@ class AvogadroKeyDownDownAgent(AvogadroAgent):
 
 class AvogadroKeyUpDownAgent(AvogadroAgent):
   name = "KeyUpDown"
-  min = 0.0
-  max = 300
+  minVal = 0.0
+  maxVal = 300.0
+  numBuckets = 284.0
+  resolution = max(0.001, (maxVal - minVal) / numBuckets)
 
   ENCODER_PARAMS = {
     name: {
-      "clipInput": True,
-      "fieldname": name,
-      "maxval": max,
-      "minval": min,
-      "n": 50,
       "name": name,
-      "type": "ScalarEncoder",
-      "w": 21
+      "fieldname": name,
+      "resolution": resolution,
+      "seed": 42,
+      "type": "RandomDistributedScalarEncoder"
     }
   }
 
@@ -109,19 +106,18 @@ class AvogadroKeyUpDownAgent(AvogadroAgent):
 
 class AvogadroKeyHoldAgent(AvogadroAgent):
   name = "KeyHold"
-  min = 0.0
-  max = 2
+  minVal = 0.0
+  maxVal = 2.0
+  numBuckets = 284.0
+  resolution = max(0.001, (maxVal - minVal) / numBuckets)
 
   ENCODER_PARAMS = {
     name: {
-      "clipInput": True,
-      "fieldname": name,
-      "maxval": max,
-      "minval": min,
-      "n": 50,
       "name": name,
-      "type": "ScalarEncoder",
-      "w": 21
+      "fieldname": name,
+      "resolution": resolution,
+      "seed": 42,
+      "type": "RandomDistributedScalarEncoder"
     }
   }
 

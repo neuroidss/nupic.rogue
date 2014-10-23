@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 #------------------------------------------------------------------------------
-# Copyright 2013-2014 Numenta Inc.
+# Copyright 2014 Numenta Inc.
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -14,9 +14,11 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 #------------------------------------------------------------------------------
+
 """ Utility for fetching metric data from local database, and forwarding to
 a Grok server via Custom Metrics Socket API.
 """
+
 import csv
 import os
 from optparse import OptionParser

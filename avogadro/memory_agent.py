@@ -22,19 +22,18 @@ from model_params import getModelParams
 
 class AvogadroMemoryAgent(AvogadroAgent):
   name = "MemoryPercent"
-  min = 0.0
-  max = 100
+  minVal = 0.0
+  maxVal = 100.0
+  numBuckets = 284.0
+  resolution = max(0.001, (maxVal - minVal) / numBuckets)
 
   ENCODER_PARAMS = {
     name: {
-      "clipInput": True,
-      "fieldname": name,
-      "maxval": max,
-      "minval": min,
-      "n": 50,
       "name": name,
-      "type": "ScalarEncoder",
-      "w": 21
+      "fieldname": name,
+      "resolution": resolution,
+      "seed": 42,
+      "type": "RandomDistributedScalarEncoder"
     }
   }
 

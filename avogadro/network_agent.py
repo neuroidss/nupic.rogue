@@ -1,4 +1,3 @@
-#!/usr/bin/env python
 #------------------------------------------------------------------------------
 # Copyright 2013-2014 Numenta Inc.
 #
@@ -24,19 +23,18 @@ from model_params import getModelParams
 class AvogadroNetworkBytesSentAgent(AvogadroAgent):
   name = "NetworkBytesSent"
   datasourceType = "DERIVE"
-  min = 0.0
-  max = 1000000
+  minVal = 0
+  maxVal = 1000000
+  numBuckets = 284.0
+  resolution = max(0.001, (maxVal - minVal) / numBuckets)
 
   ENCODER_PARAMS = {
     name: {
-      "clipInput": True,
-      "fieldname": name,
-      "maxval": max,
-      "minval": min,
-      "n": 50,
       "name": name,
-      "type": "ScalarEncoder",
-      "w": 21
+      "fieldname": name,
+      "resolution": resolution,
+      "seed": 42,
+      "type": "RandomDistributedScalarEncoder"
     }
   }
 
@@ -50,19 +48,18 @@ class AvogadroNetworkBytesSentAgent(AvogadroAgent):
 class AvogadroNetworkBytesReceivedAgent(AvogadroAgent):
   name = "NetworkBytesReceived"
   datasourceType = "DERIVE"
-  min = 0.0
-  max = 1000000
+  minVal = 0
+  maxVal = 1000000
+  numBuckets = 284.0
+  resolution = max(0.001, (maxVal - minVal) / numBuckets)
 
   ENCODER_PARAMS = {
     name: {
-      "clipInput": True,
-      "fieldname": name,
-      "maxval": max,
-      "minval": min,
-      "n": 50,
       "name": name,
-      "type": "ScalarEncoder",
-      "w": 21
+      "fieldname": name,
+      "resolution": resolution,
+      "seed": 42,
+      "type": "RandomDistributedScalarEncoder"
     }
   }
 

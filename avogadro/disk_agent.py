@@ -23,19 +23,18 @@ from model_params import getModelParams
 class AvogadroDiskReadBytesAgent(AvogadroAgent):
   name = "DiskReadBytes"
   datasourceType = "DERIVE"
-  min = 0.0
-  max = 1000000
+  minVal = 0
+  maxVal = 1000000
+  numBuckets = 284.0
+  resolution = max(0.001, (maxVal - minVal) / numBuckets)
 
   ENCODER_PARAMS = {
     name: {
-      "clipInput": True,
-      "fieldname": name,
-      "maxval": max,
-      "minval": min,
-      "n": 50,
       "name": name,
-      "type": "ScalarEncoder",
-      "w": 21
+      "fieldname": name,
+      "resolution": resolution,
+      "seed": 42,
+      "type": "RandomDistributedScalarEncoder"
     }
   }
 
@@ -49,19 +48,18 @@ class AvogadroDiskReadBytesAgent(AvogadroAgent):
 class AvogadroDiskWriteBytesAgent(AvogadroAgent):
   name = "DiskWriteBytes"
   datasourceType = "DERIVE"
-  min = 0.0
-  max = 1000000
+  minVal = 0
+  maxVal = 1000000
+  numBuckets = 284.0
+  resolution = max(0.001, (maxVal - minVal) / numBuckets)
 
   ENCODER_PARAMS = {
     name: {
-      "clipInput": True,
-      "fieldname": name,
-      "maxval": max,
-      "minval": min,
-      "n": 50,
       "name": name,
-      "type": "ScalarEncoder",
-      "w": 21
+      "fieldname": name,
+      "resolution": resolution,
+      "seed": 42,
+      "type": "RandomDistributedScalarEncoder"
     }
   }
 
@@ -75,19 +73,18 @@ class AvogadroDiskWriteBytesAgent(AvogadroAgent):
 class AvogadroDiskReadTimeAgent(AvogadroAgent):
   name = "DiskReadTime"
   datasourceType = "DERIVE"
-  min = 0.0
-  max = 1000
+  minVal = 0
+  maxVal = 1000
+  numBuckets = 284.0
+  resolution = max(0.001, (maxVal - minVal) / numBuckets)
 
   ENCODER_PARAMS = {
     name: {
-      "clipInput": True,
-      "fieldname": name,
-      "maxval": max,
-      "minval": min,
-      "n": 50,
       "name": name,
-      "type": "ScalarEncoder",
-      "w": 21
+      "fieldname": name,
+      "resolution": resolution,
+      "seed": 42,
+      "type": "RandomDistributedScalarEncoder"
     }
   }
 
@@ -101,19 +98,18 @@ class AvogadroDiskReadTimeAgent(AvogadroAgent):
 class AvogadroDiskWriteTimeAgent(AvogadroAgent):
   name = "DiskWriteTime"
   datasourceType = "DERIVE"
-  min = 0.0
-  max = 3000
+  minVal = 0
+  maxVal = 3000
+  numBuckets = 284.0
+  resolution = max(0.001, (maxVal - minVal) / numBuckets)
 
   ENCODER_PARAMS = {
     name: {
-      "clipInput": True,
-      "fieldname": name,
-      "maxval": max,
-      "minval": min,
-      "n": 50,
       "name": name,
-      "type": "ScalarEncoder",
-      "w": 21
+      "fieldname": name,
+      "resolution": resolution,
+      "seed": 42,
+      "type": "RandomDistributedScalarEncoder"
     }
   }
 

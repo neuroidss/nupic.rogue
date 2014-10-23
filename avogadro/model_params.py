@@ -54,6 +54,7 @@ MODEL_PARAMS = {
       "sensorAutoReset": None
     },
     "spParams": {
+      "spatialImp": "cpp",
       "columnCount": 2048,
       "synPermInactiveDec": 0.00065,
       "randomSP": 0,
@@ -66,8 +67,7 @@ MODEL_PARAMS = {
       "coincInputPoolPct": 0.8,
       "globalInhibition": 1,
       "useHighTier": 0,
-      "maxFiringBoost": 1.0,
-      "maxSynPermBoost": 1.0
+      "maxBoost": 1.0
     },
     "trainSPNetOnlyIfRequested": False,
     "clParams": {
@@ -109,6 +109,7 @@ MODEL_PARAMS = {
 }
 
 
+
 def getModelParams(encoderParams, predictedField):
   """
     Creates a model params dict that includes the encoder params for the
@@ -117,20 +118,17 @@ def getModelParams(encoderParams, predictedField):
     :param encoderParams: A dict containing the encoder parameters for the
     specified predicted field. For example:
       {
-        u"cpu_percent": {
-          "clipInput": True,
-          "fieldname": u"cpu_percent",
-          "maxval": 100.0,
-          "minval": 0.0,
-          "n": 50,
-          "name": u"cpu_percent",
-          "type": "ScalarEncoder",
-          "w": 21
+        u"CPUPercent": {
+          u"name": u"CPUPercent",
+          "fieldname": u"CPUPercent",
+          "resolution": 0.3521126761,
+          "seed": 42,
+          "type": "RandomDistributedScalarEncoder"
         }
       }
 
     NOTE: The fieldname, name and parent value must all be the same (e.g.,
-      cpu_percent)
+      CPUPercent)
 
     :param predictedField: A `string` representing the name of the
     predictedField. This should match exactly the `fieldname` in the encoder
