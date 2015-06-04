@@ -57,7 +57,6 @@ MODEL_PARAMS = {
       "spatialImp": "cpp",
       "columnCount": 2048,
       "synPermInactiveDec": 0.00065,
-      "randomSP": 0,
       "inputWidth": 0,
       "spVerbosity": 0,
       "synPermActiveInc": 0.001,
@@ -66,7 +65,6 @@ MODEL_PARAMS = {
       "seed": 1956,
       "potentialPct": 0.8,
       "globalInhibition": 1,
-      "useHighTier": 0,
       "maxBoost": 1.0
     },
     "trainSPNetOnlyIfRequested": False,
