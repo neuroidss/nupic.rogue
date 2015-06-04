@@ -62,9 +62,9 @@ MODEL_PARAMS = {
       "spVerbosity": 0,
       "synPermActiveInc": 0.001,
       "synPermConnected": 0.1,
-      "numActivePerInhArea": 40,
+      "numActiveColumnsPerInhArea": 40,
       "seed": 1956,
-      "coincInputPoolPct": 0.8,
+      "potentialPct": 0.8,
       "globalInhibition": 1,
       "useHighTier": 0,
       "maxBoost": 1.0
